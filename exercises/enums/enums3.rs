@@ -8,7 +8,10 @@
 // I AM NOT DONE
 
 enum Message {
-    // TODO: implement the message variant types based on their usage below
+    ChangeColor(i32,i32,i32),
+    Move{x:i32,y:i32},
+    Echo(String),
+    Quit,
 }
 
 struct Point {
@@ -39,10 +42,12 @@ impl State {
     }
 
     fn process(&mut self, message: Message) {
-        // TODO: create a match expression to process the different message
-        // variants
-        // Remember: When passing a tuple as a function argument, you'll need
-        // extra parentheses: fn function((t, u, p, l, e))
+        match message{
+            Message::ChangeColor(u8,u8,u8)=>{self.change_color((x,y,z))},
+            Message::Move{x,y}=>{self.move_position(Point{x,y})},
+            Message::Echo(st)=>{self.echo(st)},
+            Message::Quit=>self.quit()
+        }
     }
 }
 
